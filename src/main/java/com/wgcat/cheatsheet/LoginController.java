@@ -19,7 +19,7 @@ public class LoginController {
     public String handleLogin()
     {
         //LOGGER.info("loginPage");
-        return "login";
+        return "redirect:/login";
     }
     
 
