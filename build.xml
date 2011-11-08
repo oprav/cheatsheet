@@ -1,65 +1,54 @@
 <?xml version='1.0'?>
-<project name='cheatsheet' default='deploywar' xmlns:ivy='antlib:org.apache.ivy.ant'>
+<project name='cheatsheet' default='war'>
 
+    <property environment='env'/>
     <property file='build.properties'/>
-    <property name='src.dir' value='src'/>
-    <property name='web.dir' value='war'/>
+
+    <property name='src.dir' value='${basedir}/src'/>
+    <property name='web.dir' value='${basedir}/war'/>
     <property name='build.dir' value='${web.dir}/WEB-INF/classes'/>
     <property name='lib.dir' value='${web.dir}/WEB-INF/lib'/>
-	<property name='project.lib.dir' value='lib'/>
-    <property name='name' value='cheatsheet'/>
-	
-	<path id='ivy.lib.path'>
-	       <fileset dir='${ivy.lib}' includes='*.jar'/>
-	    </path>
-	    <taskdef resource='org/apache/ivy/ant/antlib.xml'
-	        uri='antlib:org.apache.ivy.ant' classpathref='ivy.lib.path'/>
+    <property name='project.lib.dir' value='${basedir}/lib'/>
 
-    <path id='master-classpath'>
-        <fileset dir='${lib.dir}/'>
-              <include name='*.jar'/>
-        </fileset>
-    	<fileset dir='${project.lib.dir}/'>
-            <include name='*.jar'/>
-        </fileset>
-        <fileset dir='${appserver.lib}'>
-              <include name='*.jar'/>
-        </fileset>
-        <pathelement path='${build.dir}' />
-    </path>
+    <import file='ivy-targets.xml'/>
 
-    <target name='compile' depends='ivy-resolve'>
+    <target name='check-proxy'>
+        <condition property='proxy.enabled'>
+            <and>
+                <isset property='proxy.host'/>
+                <isreachable host='${proxy.host}'/>
+            </and>
+        </condition>
+    </target>
+
+    <target name='set-proxy' depends='check-proxy' if='proxy.enabled'>
+        <setproxy proxyhost='${proxy.host}' proxyport='${proxy.port}'/>
+    </target>
+
+    <target name='compile' depends='ivy-init, ivy-resolve'>
         <mkdir dir='${build.dir}'/>
-        <mkdir dir='${lib.dir}'/>
-    	<mkdir dir='${project.lib.dir}'/>
-        <javac destdir='${build.dir}' source='1.5' target='1.5' debug='true'
-           deprecation='false' optimize='fasle' failonerror='true'>
+        <path id='build-classpath'>
+            <fileset dir='${lib.dir}/'>
+                <include name='*.jar'/>
+            </fileset>
+        </path>
+
+        <javac source='${ant.java.version}' target='1.6'
+            debug='true' failonerror='true' destdir='${build.dir}'>
             <src path='${src.dir}'/>
-            <classpath refid='master-classpath'/>
+            <classpath refid='build-classpath'/>
         </javac>
     </target>
 
-    <target name='deploywar' depends='compile' description='deploy as war'>
-        <war destfile='${name}.war' webxml='src/main/webapp/WEB-INF/web.xml'>
+    <target name='war' depends='compile'>
+        <war destfile='${project.name}.war' webxml='src/main/webapp/WEB-INF/web.xml'>
             <lib dir='${lib.dir}'/>
             <classes dir='${build.dir}'/>
             <fileset dir='src/main/webapp' excludes='WEB-INF/web.xml'/>
         </war>
-        <copy todir='${deploy.path}'>
-              <fileset dir='.'>
-                <include name='*.war'/>
-              </fileset>
-        </copy>
+        <copy file='${project.name}.war' todir='${deploy.dir}'/>
+        <delete dir='${web.dir}'/>
     </target>
 
-    <target name='ivy-resolve'>
-    	<setproxy proxyhost='${proxy.host}' proxyport='${proxy.port}'/>
-        <ivy:retrieve pattern='${lib.dir}/[module]-[type]-[artifact]-[revision].[ext]' sync='true'/>
-    	<copy todir='${project.lib.dir}'>
-          <fileset dir='${lib.dir}'>
-            <include name='*.jar'/>
-          </fileset>
-    	</copy>
-    </target>
 </project>
 
