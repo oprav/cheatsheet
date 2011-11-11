@@ -2,29 +2,35 @@
     <info organisation="wgcat" module="cheatsheet"/>
     
     <dependencies>
-        <dependency org="org.slf4j" name="slf4j-api" rev="1.6.4"/>
-        <dependency org="org.slf4j" name="slf4j-log4j12" rev="1.6.4"/>
-        <dependency org="org.slf4j" name="jcl-over-slf4j" rev="1.6.3"/>
-        <dependency org="log4j" name="log4j" rev="1.2.16"/>
-        <dependency org="org.springframework" name="spring-beans" rev="3.0.6.RELEASE" transitive="false" />
-        <dependency org="org.springframework" name="spring-context" rev="3.0.6.RELEASE" transitive="false">
+        <dependency org="org.slf4j" name="com.springsource.slf4j.api" rev="1.6.1" />
+        <dependency org="org.slf4j" name="com.springsource.slf4j.log4j" rev="1.6.1" />
+        <dependency org="org.slf4j" name="com.springsource.slf4j.org.apache.log4j" rev="1.6.1" />
+        <dependency org="org.apache.log4j" name="com.springsource.org.apache.log4j" rev="1.2.16" />
+        
+        <dependency org="org.springframework" name="org.springframework.beans" rev="3.0.6.RELEASE">
+    
           <exclude org="commons-logging" name="commons-logging"/>
         </dependency>
-        <dependency org="org.springframework" name="spring-context-support" rev="3.0.6.RELEASE" transitive="false" />
-        <dependency org="org.springframework" name="spring-core" rev="3.0.6.RELEASE" transitive="false" />
-        <dependency org="org.springframework" name="spring-aop" rev="3.0.6.RELEASE" transitive="false"/>
-        <dependency org="org.springframework" name="spring-web" rev="3.0.6.RELEASE" transitive="false"/>
-        <dependency org="org.springframework" name="spring-webmvc" rev="3.0.6.RELEASE" transitive="false"/>
-        <dependency org="org.springframework" name="spring-asm" rev="3.0.6.RELEASE" transitive="false"/>
-        <dependency org="org.springframework" name="spring-expression" rev="3.0.6.RELEASE" transitive="false"/>
-        <dependency org="org.springframework" name="spring-tx" rev="3.0.6.RELEASE" transitive="false"/>
+        <dependency org="org.springframework" name="org.springframework.context" rev="3.0.6.RELEASE">
+            <exclude org="commons-logging" name="commons-logging"/>
+        </dependency>
 
-        <dependency org="org.springframework.security" name="spring-security-core" rev="3.0.6.RELEASE" transitive="false"/>
-        <dependency org="org.springframework.security" name="spring-security-web" rev="3.0.6.RELEASE" transitive="false"/>
-        <dependency org="org.springframework.security" name="spring-security-config" rev="3.0.7.RELEASE" transitive="false"/>
+        <dependency org="org.springframework.security" name="org.springframework.security.core" rev="3.0.4.RELEASE" />
+        <dependency org="org.springframework.security" name="org.springframework.security.web" rev="3.0.4.RELEASE" />
+        <dependency org="org.springframework" name="org.springframework.expression" rev="3.0.6.RELEASE" />
+        <dependency org="org.springframework" name="org.springframework.asm" rev="3.0.6.RELEASE" />
 
-        <dependency org="jstl" name="jstl" rev="1.2" transitive="false"/>
-        <dependency org="aopalliance" name="aopalliance" rev="1.0" transitive="false"/>
+
+        <dependency org="javax.servlet" name="com.springsource.javax.servlet.jsp.jstl" rev="1.2.0.v20110728" />
+
+        <dependency org="org.aopalliance" name="com.springsource.org.aopalliance" rev="1.0.0" />
+
+        <dependency org="org.springframework" name="org.springframework.orm" rev="3.0.6.RELEASE" />
+
+        <dependency org="javax.activation" name="com.springsource.javax.activation" rev="1.1.1" />
+        <dependency org="org.aopalliance" name="com.springsource.org.aopalliance" rev="1.0.0" />
     </dependencies>
 </ivy-module>
+
+
 

@@ -23,7 +23,6 @@
         <get src='http://repo1.maven.org/maven2/org/apache/ivy/ivy/${ivy.install.version}/ivy-${ivy.install.version}.jar'
             dest='${ivy.home}/ivy-${ivy.install.version}.jar'/>
     </target>
-
     <target name='ivy-resolve' depends='ivy-init'>
        <mkdir dir='${lib.dir}'/>
        <mkdir dir='${project.lib.dir}'/>
@@ -41,3 +40,4 @@
         <ivy:cleancache/>
     </target>
 </project>
+
