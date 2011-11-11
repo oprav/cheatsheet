@@ -8,6 +8,7 @@
     <property name='web.dir' value='${basedir}/war'/>
     <property name='build.dir' value='${web.dir}/WEB-INF/classes'/>
     <property name='lib.dir' value='${web.dir}/WEB-INF/lib'/>
+    <property name='lib1.dir' value='${basedir}/lib'/>
     <property name='project.lib.dir' value='${basedir}/lib'/>
 
     <import file='ivy-targets.xml'/>
@@ -28,13 +29,13 @@
     <target name='compile'>
         <mkdir dir='${build.dir}'/>
         <path id='build-classpath'>
-            <fileset dir='${lib.dir}/'>
+            <fileset dir='${lib1.dir}/'>
                 <include name='*.jar'/>
             </fileset>
         </path>
 
         <javac source='${ant.java.version}' target='1.6'
-            debug='true' failonerror='true' destdir='${build.dir}'>
+            debug='true' failonerror='true' destdir='${build.dir}' includeantruntime = 'true'>
             <src path='${src.dir}'/>
             <classpath refid='build-classpath'/>
         </javac>
@@ -42,7 +43,7 @@
 
     <target name='war' depends='compile'>
         <war destfile='${project.name}.war' webxml='src/main/webapp/WEB-INF/web.xml'>
-            <lib dir='${lib.dir}'/>
+            <lib dir='${lib1.dir}'/>
             <classes dir='${build.dir}'/>
             <fileset dir='src/main/webapp' excludes='WEB-INF/web.xml'/>
         </war>

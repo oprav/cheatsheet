@@ -7,6 +7,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.wgcat.cheatsheet.dao.ThemeDaoImpl;
+import com.wgcat.cheatsheet.dbobjects.Theme;
+
 /**
  * Handles requests for the application home page.
  */
@@ -17,6 +20,10 @@ public class HomeController {
 	
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
 	public String home(Model model) {
+	    /*Theme theme = new Theme();
+	    theme.setTitle("Bla Bla");
+	    ThemeDaoImpl dao = new ThemeDaoImpl();
+	    dao.addTheme(theme);*/
 		LOGGER.info("Welcome home!");
 		return "home";
 	}
