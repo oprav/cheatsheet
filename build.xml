@@ -8,7 +8,6 @@
     <property name='web.dir' value='${basedir}/war'/>
     <property name='build.dir' value='${web.dir}/WEB-INF/classes'/>
     <property name='lib.dir' value='${web.dir}/WEB-INF/lib'/>
-    <property name='lib1.dir' value='${basedir}/lib'/>
     <property name='project.lib.dir' value='${basedir}/lib'/>
 
     <import file='ivy-targets.xml'/>
@@ -26,10 +25,19 @@
         <setproxy proxyhost='${proxy.host}' proxyport='${proxy.port}'/>
     </target>
 
-    <target name='compile'>
+    <target name='copy-libs'>
+        <mkdir dir='${lib.dir}'/>
+        <copy todir='${lib.dir}'>
+         <fileset dir='${project.lib.dir}'>
+           <include name='*.jar'/>
+         </fileset>
+       </copy>
+    </target>
+
+    <target name='compile' depends='copy-libs'>
         <mkdir dir='${build.dir}'/>
         <path id='build-classpath'>
-            <fileset dir='${lib1.dir}/'>
+            <fileset dir='${lib.dir}/'>
                 <include name='*.jar'/>
             </fileset>
         </path>
@@ -43,7 +51,7 @@
 
     <target name='war' depends='compile'>
         <war destfile='${project.name}.war' webxml='src/main/webapp/WEB-INF/web.xml'>
-            <lib dir='${lib1.dir}'/>
+            <lib dir='${lib.dir}'/>
             <classes dir='${build.dir}'/>
             <fileset dir='src/main/webapp' excludes='WEB-INF/web.xml'/>
         </war>

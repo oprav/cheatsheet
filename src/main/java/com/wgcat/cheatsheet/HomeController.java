@@ -1,5 +1,7 @@
 package com.wgcat.cheatsheet;
 
+import javax.annotation.Resource;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -18,12 +20,14 @@ public class HomeController {
 	
 	private static final Logger LOGGER = LoggerFactory.getLogger(HomeController.class);
 	
+	@Resource(name = "themeDao")
+	ThemeDaoImpl themeDao;
+	
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
 	public String home(Model model) {
-	    /*Theme theme = new Theme();
+	    Theme theme = new Theme();
 	    theme.setTitle("Bla Bla");
-	    ThemeDaoImpl dao = new ThemeDaoImpl();
-	    dao.addTheme(theme);*/
+	    themeDao.addTheme(theme);
 		LOGGER.info("Welcome home!");
 		return "home";
 	}
