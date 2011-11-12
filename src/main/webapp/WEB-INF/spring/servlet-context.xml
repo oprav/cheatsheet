@@ -41,6 +41,13 @@
 
     <beans:bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
         <beans:property name="dataSource" ref="dataSource" />
+        <beans:property name="configurationClass" value="org.hibernate.cfg.AnnotationConfiguration" />
+        <beans:property name="configLocation" value="/WEB-INF/spring/hibernate.cfg.xml" />
+        <beans:property name="hibernateProperties">
+            <beans:props>
+                <beans:prop key="hibernate.dialect">${hibernate.dialect}</beans:prop>
+            </beans:props>
+        </beans:property>
     </beans:bean>
 
     <beans:bean id="themeDao"

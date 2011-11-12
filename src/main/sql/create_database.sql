@@ -3,7 +3,8 @@
 create table theme
 (
 	id int primary key default nextval('theme_id_seq'),
-	title varchar (100) not null
+	title varchar (100) not null,
+	version int not null
 	
 );
 
@@ -17,6 +18,7 @@ create table topic
 	theme_id int not null,
 	title varchar (500) not null,
 	sort_id int not null,
+	version int not null,
 	is_delete bit not null
 );
 

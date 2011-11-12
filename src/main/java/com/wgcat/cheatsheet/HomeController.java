@@ -26,7 +26,7 @@ public class HomeController {
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
 	public String home(Model model) {
 	    Theme theme = new Theme();
-	    theme.setTitle("Bla Bla");
+	    theme.setTitle("Bla1 Bla1");
 	    themeDao.addTheme(theme);
 		LOGGER.info("Welcome home!");
 		return "home";
