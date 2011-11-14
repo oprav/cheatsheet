@@ -17,5 +17,6 @@
         <property name="hibernate.connection.charSet">true</property>
 
         <mapping class="com.wgcat.cheatsheet.dbobjects.Theme"/>
+        <mapping class="com.wgcat.cheatsheet.dbobjects.Topic"/>
     </session-factory>
 </hibernate-configuration>

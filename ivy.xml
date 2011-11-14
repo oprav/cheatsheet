@@ -29,7 +29,7 @@
         <dependency org="org.springframework" name="org.springframework.web" rev="3.0.6.RELEASE" transitive="false"/>
         <dependency org="org.springframework" name="org.springframework.transaction" rev="3.0.6.RELEASE" transitive="false"/>
         <dependency org="javax.jdo" name="com.springsource.javax.jdo" rev="3.0.0" transitive="false"/>
-        <dependency org="javax.persistence" name="com.springsource.javax.persistence" rev="2.0.0" transitive="false"/>
+        <dependency org="javax.persistence" name="com.springsource.javax.persistence" rev="2.0.0" transitive="true"/>
         <dependency org="org.springframework" name="org.springframework.aop" rev="3.0.6.RELEASE" transitive="false"/>
         <dependency org="org.springframework" name="org.springframework.jdbc" rev="3.0.6.RELEASE" transitive="false"/>
         <dependency org="org.hibernate" name="com.springsource.org.hibernate.annotations" rev="3.4.0.GA-A"/>

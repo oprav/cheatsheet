@@ -21,7 +21,17 @@
 		    </form>
 	    </td>
     </tr></table>
-	<div id="cheatsheetContainer">
+    <div id="cheatsheetContainer">
+        <c:forEach var="theme" items="${themes}">
+            <div class="cheatsheet">
+            <div class="title">${theme.title}</div>
+            <c:forEach var="topic" items="${theme.topics}">
+                    <div class="content">${topic.title}</div>
+            </c:forEach>
+            </div>    
+        </c:forEach>
+    </div>
+	<!-- <div id="cheatsheetContainer">
 		<div class="cheatsheet">
 		   <div class="title">Java</div>
 		   <div class="content">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</div>
@@ -34,7 +44,7 @@
 	       <div class="title">Java</div>
 	       <div class="content">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</div>
 	    </div>
-    </div>
+    </div>-->
 <!-- <P>  The time on the server is ${serverTime}. </P> -->
 </body>
 </html>

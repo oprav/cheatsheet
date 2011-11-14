@@ -15,7 +15,7 @@ public class CheatsheetLogicImpl implements CheatsheetLogic
     @Override
     public List<Theme> getThemes()
     {
-        return null;
+        return dao.listThemes();
     }
     
     @Override
@@ -23,5 +23,10 @@ public class CheatsheetLogicImpl implements CheatsheetLogic
     public void saveTheme(Theme theme)
     {
         dao.addTheme(theme);
+    }
+    
+    public void setDao(ThemeDao dao)
+    {
+        this.dao = dao;
     }
 }

@@ -1,5 +1,7 @@
 package com.wgcat.cheatsheet.dbobjects;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.jdo.annotations.Column;
 import javax.persistence.Entity;
@@ -8,7 +10,10 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Version;
-
+import javax.persistence.OneToMany;
+import javax.persistence.JoinTable;
+import javax.persistence.JoinColumn;
+import javax.persistence.CascadeType;
 
 @Entity
 @Table(name="theme")
@@ -31,6 +36,16 @@ public class Theme implements Serializable {
     @Column(name = "version")
     private int version = 0;
     
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "topic", joinColumns = { @JoinColumn(name = "id") }, 
+        inverseJoinColumns = { @JoinColumn(name = "theme_id") })
+    private List<Topic> topics; 
+    
+    public Theme()
+    {
+        topics = new ArrayList<Topic>();
+    }
+    
     public String getTitle()
     {
         return title;
@@ -49,5 +64,15 @@ public class Theme implements Serializable {
     public int getVersion()
     {
         return version;
+    }
+    
+    public List<Topic> getTopics()
+    {
+        return topics;
+    }
+    
+    public void setTopics(List<Topic> topics)
+    {
+        this.topics = topics;
     }
 }
