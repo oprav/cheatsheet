@@ -37,8 +37,8 @@ public class Theme implements Serializable {
     private int version = 0;
     
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "topic", joinColumns = { @JoinColumn(name = "id") }, 
-        inverseJoinColumns = { @JoinColumn(name = "theme_id") })
+    @JoinTable(name = "topic", joinColumns = { @JoinColumn(name = "theme_id") }, 
+        inverseJoinColumns = { @JoinColumn(name = "id") })
     private List<Topic> topics; 
     
     public Theme()

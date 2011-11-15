@@ -31,20 +31,6 @@
             </div>    
         </c:forEach>
     </div>
-	<!-- <div id="cheatsheetContainer">
-		<div class="cheatsheet">
-		   <div class="title">Java</div>
-		   <div class="content">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</div>
-		</div>
-		<div class="cheatsheet">
-	       <div class="title">Java</div>
-	       <div class="content">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</div>
-	    </div>
-	    <div class="cheatsheet">
-	       <div class="title">Java</div>
-	       <div class="content">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</div>
-	    </div>
-    </div>-->
 <!-- <P>  The time on the server is ${serverTime}. </P> -->
 </body>
 </html>
