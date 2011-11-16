@@ -23,26 +23,13 @@ public class ThemeDaoImpl extends HibernateDaoSupport implements ThemeDao {
     @Override
     @SuppressWarnings("unchecked")
     public List<Theme> listThemes() {
-        //List<Theme> themes = getHibernateTemplate().
-        //        find("from Theme themeEntry left join fetch themeEntry.topics order by themeEntry.id");
-        
         List<Theme> themes = getHibernateTemplate().
-                find("from Theme themeEntry left join fetch themeEntry.topics as topics "+
-                      "order by themeEntry.id, "+
-                      "topics.sort_id");
-        
-        
-        /*SessionFactory sf = getHibernateTemplate().getSessionFactory();
-        Session sess = sf.openSession();
-        List<Theme> themes = sess.createSQLQuery("select theme.id, theme.title, theme.version, topic.id, " +
-                "topic.theme_id, topic.title, topic.sort_id, topic.version, topic.is_delete "+
-                "from theme inner join topic on theme.id = " +
-                "topic.theme_id order by theme.id, topic.sort_id, topic.id").
-                    addEntity("Topic", Topic.class).addJoin("topics", "Theme.topics").list();*/
+                find("from Theme themeEntry order by themeEntry.id");
         return themes;
     }
 
     @Override
+    @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
     public void removeTheme(Theme theme) {
         getHibernateTemplate().delete(theme);
 

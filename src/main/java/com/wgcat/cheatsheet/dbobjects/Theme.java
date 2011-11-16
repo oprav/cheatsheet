@@ -5,8 +5,10 @@ import java.util.List;
 
 import javax.jdo.annotations.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OrderBy;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Version;
@@ -36,10 +38,21 @@ public class Theme implements Serializable {
     @Column(name = "version")
     private int version = 0;
     
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "topic", joinColumns = { @JoinColumn(name = "theme_id") }, 
-        inverseJoinColumns = { @JoinColumn(name = "id") })
-    private List<Topic> topics; 
+    //it is also possible 
+    /*@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+    @OrderBy("sort_id")
+    @JoinColumn(name="theme_id")
+    private List<Topic> topics;*/
+    
+    @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+    @OrderBy("sort_id")
+    @JoinTable(
+            name="topic",
+            joinColumns = { @JoinColumn( name="theme_id") },
+            inverseJoinColumns = @JoinColumn( name="id")
+    )
+    private List<Topic> topics;
+    
     
     public Theme()
     {
