@@ -43,6 +43,10 @@ public class Topic implements Serializable {
     @Column(name = "is_delete")
     private boolean is_delete;
     
+    @ManyToOne
+    @JoinColumn(name="theme_id", insertable=false, updatable=false)
+    private Theme theme;
+    
     public Integer getId()
     {
         return id;
@@ -91,5 +95,10 @@ public class Topic implements Serializable {
     public void setTitle(String title)
     {
         this.title = title;
+    }
+    
+    public Theme getTheme()
+    {
+        return theme;
     }
 }

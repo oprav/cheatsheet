@@ -24,7 +24,7 @@ public class ThemeDaoImpl extends HibernateDaoSupport implements ThemeDao {
     @SuppressWarnings("unchecked")
     public List<Theme> listThemes() {
         List<Theme> themes = getHibernateTemplate().
-                find("from Theme themeEntry order by themeEntry.id");
+                find("select distinct themeEntry from Theme themeEntry left join fetch themeEntry.topics order by themeEntry.id");
         return themes;
     }
 
