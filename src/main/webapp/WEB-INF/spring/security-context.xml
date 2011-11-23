@@ -17,22 +17,13 @@
         -->
     </global-method-security>
 
-    <http use-expressions="true">
-        <intercept-url pattern="/" access="permitAll"/>
-        <intercept-url pattern="/resources/**" filters="none" />
-        <intercept-url pattern="/**" access="isAuthenticated()" />
-        <form-login default-target-url="/home" always-use-default-target="true"/>
-        <logout />
-        <remember-me />
-<!--
-    Uncomment to enable X509 client authentication support
-        <x509 />
--->
-        <!-- Uncomment to limit the number of sessions a user can have -->
-        <session-management invalid-session-url="/timeout.jsp">
-            <concurrency-control max-sessions="5" error-if-maximum-exceeded="true" />
-        </session-management>
-
+    <http>
+	<intercept-url pattern="/home" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+	<intercept-url pattern="/resources/**" filters="none" />
+	<intercept-url pattern="/**" access="ROLE_USER" />
+	<form-login default-target-url="/home" />
+	<http-basic />
+	<logout />
     </http>
 
     <!--

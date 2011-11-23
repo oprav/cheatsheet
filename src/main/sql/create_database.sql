@@ -3,6 +3,7 @@
 create table theme
 (
 	id int primary key default nextval('theme_id_seq'),
+	profile_id int not null,
 	title varchar (100) not null,
 	version int not null
 	
@@ -23,3 +24,14 @@ create table topic
 );
 
 alter sequence topic_id_seq owned by topic.id;
+
+create sequence profile_id_seq;
+
+create table profile
+(
+    id int primary key default nextval('profile_id_seq'),
+    title varchar(100) not null,
+    version int not null
+)
+
+alter sequence profile_id_seq owned by profile.id;

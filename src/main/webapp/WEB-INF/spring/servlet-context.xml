@@ -8,6 +8,25 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
         http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
 
+    <beans:bean id="handlerMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+	<beans:property name="interceptors">
+	    <beans:list>
+		<beans:ref bean="cheatSheetHandlerInterceptor" />
+	    </beans:list>
+	</beans:property>
+	<beans:property name="mappings" >
+	    <beans:value>
+		/*=cheatsheetController
+		/**=cheatsheetController
+		*=cheatsheetController
+	    </beans:value>
+	</beans:property>
+    </beans:bean>
+    
+    <beans:bean id="cheatSheetHandlerInterceptor" 
+	    class="com.wgcat.cheatsheet.logic.CheatSheetHandlerInterceptor" >
+    </beans:bean>
+    
     <beans:bean id="propertyConfigurer"  class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <beans:property name="location" value="/WEB-INF/classes/database.properties" />
     </beans:bean>
@@ -68,6 +87,7 @@
             <beans:ref local="themeDao"/>
         </beans:property>
     </beans:bean>
+    
 
     
 </beans:beans>

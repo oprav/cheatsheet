@@ -38,12 +38,6 @@ public class Theme implements Serializable {
     @Column(name = "version")
     private int version = 0;
     
-    //it is also possible 
-    /*@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
-    @OrderBy("sort_id")
-    @JoinColumn(name="theme_id")
-    private List<Topic> topics;*/
-    
     @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
     @OrderBy("sort_id")
     @JoinTable(

@@ -10,8 +10,6 @@
     <property name='lib.dir' value='${web.dir}/WEB-INF/lib'/>
     <property name='project.lib.dir' value='${basedir}/lib'/>
 
-    <import file='ivy-targets.xml'/>
-
     <target name='check-proxy'>
         <condition property='proxy.enabled'>
             <and>
@@ -58,6 +56,6 @@
         <copy file='${project.name}.war' todir='${deploy.dir}'/>
         <delete dir='${web.dir}'/>
     </target> 
-
+    <import file='ivy-targets.xml'/>
 </project>
 

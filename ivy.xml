@@ -25,7 +25,6 @@
         <dependency org="org.apache.commons" name="com.springsource.org.apache.commons.dbcp" rev="1.2.2.osgi" />
         <dependency org="org.postgresql" name="com.springsource.org.postgresql.jdbc4" rev="8.3.604" />
         <dependency org="net.sourceforge.ehcache" name="com.springsource.net.sf.ehcache" rev="1.6.0" />
-        <dependency org="javax.servlet" name="com.springsource.javax.servlet.jsp.jstl" rev="1.2.0" transitive="false"/>
         <dependency org="org.springframework" name="org.springframework.web" rev="3.0.6.RELEASE" transitive="false"/>
         <dependency org="org.springframework" name="org.springframework.transaction" rev="3.0.6.RELEASE" transitive="false"/>
         <dependency org="javax.jdo" name="com.springsource.javax.jdo" rev="3.0.0" transitive="false"/>
@@ -33,11 +32,15 @@
         <dependency org="org.springframework" name="org.springframework.aop" rev="3.0.6.RELEASE" transitive="false"/>
         <dependency org="org.springframework" name="org.springframework.jdbc" rev="3.0.6.RELEASE" transitive="false"/>
         <dependency org="org.hibernate" name="com.springsource.org.hibernate.annotations" rev="3.4.0.GA-A"/>
+        
+        <dependency org="javax.servlet" name="com.springsource.javax.servlet.jsp.jstl" rev="1.2.0" transitive="false" />
+        <dependency org="javax.servlet" name="com.springsource.javax.servlet" rev="2.5.0" />
+<!--        <dependency org="javax.servlet" name="com.springsource.javax.servlet.jsp" rev="1.2.0" /> -->
     </dependencies>
 </ivy-module>
 
 
-<!--<dependency org="javax.servlet" name="com.springsource.javax.servlet.jsp" rev="2.1.0" />-->
+
 
 
 
