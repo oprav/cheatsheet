@@ -34,6 +34,9 @@ public class Theme implements Serializable {
     @Column(name="title")
     private String title;
     
+    @Column(name="descr")
+    private String descr;
+    
     @Version
     @Column(name = "version")
     private int version = 0;
@@ -61,6 +64,16 @@ public class Theme implements Serializable {
     public void setTitle(String title)
     {
         this.title = title;
+    }
+    
+    public String getDescription()
+    {
+        return descr;
+    }
+    
+    public void setDescription(String descr)
+    {
+        this.descr = descr;
     }
     
     public Integer getId()

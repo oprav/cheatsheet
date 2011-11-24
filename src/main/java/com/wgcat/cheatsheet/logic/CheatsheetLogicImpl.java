@@ -51,7 +51,7 @@ public class CheatsheetLogicImpl implements CheatsheetLogic
     }
     
     @Override
-    public List<Theme> getThemesByProfile(int profileId)
+    public List<Theme> getThemesByProfile(Integer profileId)
     {
         return dao.getThemesByProfile(profileId);
     }
@@ -60,5 +60,11 @@ public class CheatsheetLogicImpl implements CheatsheetLogic
     public List<Profile> getProfiles()
     {
         return dao.listProfiles();
+    }
+    
+    @Override
+    public Theme getThemeById(Integer themeId)
+    {
+        return dao.getThemeById(themeId);
     }
 }

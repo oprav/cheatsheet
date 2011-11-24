@@ -46,31 +46,19 @@ public class CheatsheetController {
 		return new ModelAndView("home", modelMap);
 	}
 	
-	@RequestMapping(value = "/showtheme", method = RequestMethod.GET)
-	public ModelAndView showDefaultThemes(Model model) {
-	    LOGGER.info("/theme handler entry");
-	    ThemeDaoImpl dao = new ThemeDaoImpl();
-	    List<Theme> themes = cheatsheetLogic.getThemes(); 
-        ModelMap modelMap = new ModelMap();
-        modelMap.addAttribute("themes", themes);
-        LOGGER.info("/theme handler return");
-        return new ModelAndView("showtheme", modelMap);
-	}
-	
-	@RequestMapping(value = "/theme/{profileId}", method = RequestMethod.GET)
-    public String addTheme(@PathVariable String profileId, Model model) {
-        LOGGER.info("/theme/{profileId} handler entry");
+	@RequestMapping(value = "/showtheme/{themeId}", method = RequestMethod.GET)
+    public ModelAndView addTheme(@PathVariable String themeId, Model model) {
+        LOGGER.info("/showtheme/{themeId} handler entry");
         ThemeDaoImpl dao = new ThemeDaoImpl();
-        List<Theme> themes = cheatsheetLogic.getThemes(); 
+        Theme theme = cheatsheetLogic.getThemeById(Integer.valueOf(themeId)); 
         ModelMap modelMap = new ModelMap();
-        modelMap.addAttribute("themes", themes);
-        LOGGER.info("/theme/{profileId} handler return");
-        //return new ModelAndView("theme", modelMap);
-        return "redirect:/badPage";
+        modelMap.addAttribute("theme", theme);
+        LOGGER.info("/showtheme/{themeId} handler return");
+        return new ModelAndView("showtheme", modelMap);
     }
 	
-	@RequestMapping(value = "/edittheme", method = RequestMethod.GET)
-    public ModelAndView editTheme(Model model) {
+	@RequestMapping(value = "/edittheme/{themeId}", method = RequestMethod.GET)
+    public ModelAndView editTheme(@PathVariable String themeId, Model model) {
 	    LOGGER.info("Edit theme");
 	    LOGGER.info(System.getProperty("user.name"));
         ThemeDaoImpl dao = new ThemeDaoImpl();

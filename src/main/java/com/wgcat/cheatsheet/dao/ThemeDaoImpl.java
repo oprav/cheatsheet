@@ -54,9 +54,9 @@ public class ThemeDaoImpl extends HibernateDaoSupport implements ThemeDao {
     public List<Theme> getThemesByProfile(Integer id)
     {
         Session hqlsession = getHibernateTemplate().getSessionFactory().openSession();
-        String query = "select distinct themeEntry from Theme themeEntry left join fetch themeEntry.topics where profile_id = :PROFILE_ID order by themeEntry.id";
+        String query = "select themeEntry from Theme themeEntry left join fetch themeEntry.topics where profile_id = ? order by themeEntry.id";
         Transaction t = hqlsession.beginTransaction();
-        List<Theme> themesByProfile = hqlsession.createQuery(query).setString("PROFILE_ID",id.toString()).list();
+        List<Theme> themesByProfile = hqlsession.createQuery(query).setInteger(0, id).list();
         t.commit();
         return themesByProfile;
     }

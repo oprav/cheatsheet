@@ -37,6 +37,9 @@ public class Topic implements Serializable {
     @Column(name = "title", length=500)
     String title;
     
+    @Column(name = "descr")
+    String descr;
+    
     @Column(name = "sort_id")
     private int sort_id;
     
@@ -95,6 +98,16 @@ public class Topic implements Serializable {
     public void setTitle(String title)
     {
         this.title = title;
+    }
+    
+    public String getDescription()
+    {
+        return this.descr;
+    }
+    
+    public void setDescription(String descr)
+    {
+        this.descr = descr;
     }
     
     public Theme getTheme()
