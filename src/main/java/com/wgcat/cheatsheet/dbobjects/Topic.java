@@ -55,6 +55,11 @@ public class Topic implements Serializable {
         return id;
     }
     
+    public void setId(Integer id)
+    {
+        this.id = id;
+    }
+    
     public int getVersion()
     {
         return version;
@@ -103,6 +108,16 @@ public class Topic implements Serializable {
     public String getDescription()
     {
         return this.descr;
+    }
+    
+    public String getDescr()
+    {
+        return descr;
+    }
+    
+    public void setDescr(String descr)
+    {
+        this.descr = descr;
     }
     
     public void setDescription(String descr)

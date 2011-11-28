@@ -17,6 +17,9 @@ import javax.persistence.JoinTable;
 import javax.persistence.JoinColumn;
 import javax.persistence.CascadeType;
 
+import org.apache.commons.collections.FactoryUtils;
+import org.apache.commons.collections.list.LazyList;
+
 @Entity
 @Table(name="theme")
 public class Theme implements Serializable {
@@ -34,12 +37,12 @@ public class Theme implements Serializable {
     @Column(name="title")
     private String title;
     
-    @Column(name="descr")
-    private String descr;
-    
     @Version
     @Column(name = "version")
     private int version = 0;
+    
+    @Column(name="descr")
+    private String descr;
     
     @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
     @OrderBy("sort_id")
@@ -53,7 +56,8 @@ public class Theme implements Serializable {
     
     public Theme()
     {
-        topics = new ArrayList<Topic>();
+        topics = 
+                LazyList.decorate(new ArrayList(), FactoryUtils.instantiateFactory(com.wgcat.cheatsheet.dbobjects.Topic.class));
     }
     
     public String getTitle()
@@ -76,9 +80,24 @@ public class Theme implements Serializable {
         this.descr = descr;
     }
     
+    public String getDescr()
+    {
+        return descr;
+    }
+    
+    public void setDescr(String descr)
+    {
+        this.descr = descr;
+    }
+    
     public Integer getId()
     {
         return id;
+    }
+    
+    public void setId(Integer id)
+    {
+        this.id = id;
     }
     
     public int getVersion()
@@ -86,13 +105,14 @@ public class Theme implements Serializable {
         return version;
     }
     
-    public List<Topic> getTopics()
+    public List getTopics()
     {
         return topics;
     }
     
-    public void setTopics(List<Topic> topics)
+    public void setTopics(List topics)
     {
         this.topics = topics;
     }
+    
 }

@@ -1,6 +1,6 @@
-h3
-{
-    color:#f00;
+body {
+	font-family: arial;
+	font-size: 14px;
 }
 
 #cheatsheetContainer
@@ -9,26 +9,72 @@ h3
     width:800px;
 }
 
-div.cheatSheet
+div.cheatSheet, div.topic
 {
     float:left;
     width:300px;
-    height:150px;
     margin-left:20px;
     margin-bottom:20px;
     border:1px solid black;
 }
 
-div.cheatsheet .title
+div.cheatSheet .themeTitle 
 {
     width:100%;
-    height:30px;
-    line-height:30px;
+    height:40px;
+    line-height:40px;
     text-align:center;
+    font-family: arial;
+    font-size: 16px;
     border-bottom:1px solid black;
 }
 
+.topicTitle
+{
+    width:100%;
+    height:40px;
+    line-height:40px;
+    text-align:center;
+    font-family: arial;
+    font-size: 16px;
+    border-bottom:1px solid black;
+}
 div.cheatsheet .content
 {
     padding:10px;
 }
+
+.themeHeader 
+{
+    font-size: 18px;
+    border-top:1px solid black;
+    border-bottom:1px solid black;
+}
+
+.topicTitle 
+{
+	font-size: 16px;
+}
+
+a.editThemeButton 
+{
+	background-color: #dbdbdb;
+	border: 1px solid black;
+	text-decoration: none;
+	font-color: black;
+}
+
+a.editThemeButton:hover
+{
+	font-color: #dbdbdb;
+	background-color: black;
+    border: 1px solid grey;
+    text-decoration: none;
+}
+
+a.editThemeButton:visited {
+	font-color: black;
+    text-decoration: none;
+}
+
+.

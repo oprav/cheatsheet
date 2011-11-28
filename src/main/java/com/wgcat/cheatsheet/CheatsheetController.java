@@ -11,6 +11,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -61,10 +63,16 @@ public class CheatsheetController {
     public ModelAndView editTheme(@PathVariable String themeId, Model model) {
 	    LOGGER.info("Edit theme");
 	    LOGGER.info(System.getProperty("user.name"));
-        ThemeDaoImpl dao = new ThemeDaoImpl();
-        List<Theme> themes = cheatsheetLogic.getThemes(); 
+        Theme theme = cheatsheetLogic.getThemeById(Integer.valueOf(themeId));
         ModelMap modelMap = new ModelMap();
-        modelMap.addAttribute("themes", themes);
+        modelMap.addAttribute("theme", theme);
         return new ModelAndView("edittheme", modelMap);
+    }
+	
+	@RequestMapping(value = "/committheme**", method = RequestMethod.POST)
+	public String commitTheme(@ModelAttribute("theme") Theme cmd, BindingResult result) {
+        String url = "redirect:/home";
+        cheatsheetLogic.saveTheme(cmd);
+        return url;
     }
 }

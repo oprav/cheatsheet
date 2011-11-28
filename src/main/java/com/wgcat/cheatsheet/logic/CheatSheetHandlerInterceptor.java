@@ -6,10 +6,13 @@ import javax.servlet.http.HttpServletResponse;
 
 
 public class CheatSheetHandlerInterceptor extends HandlerInterceptorAdapter {
+    /**
+     * Always redirecting wrong URL path to home. 
+     */
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response,
             Object handler) throws Exception {
-        //response.sendRedirect("home");
+        response.sendRedirect("home");
         return true;
     }
 }

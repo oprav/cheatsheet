@@ -33,15 +33,17 @@
 </c:choose>
     <div id="cheatsheetContainer">
         <c:forEach var="theme" items="${themes}">
-            <div class="cheatsheet">
-            <div class="title">
-                <a href="theme?theme_id=${theme.id}">${theme.title}</a>
-            </div>
-            <c:forEach var="topic" items="${theme.topics}">
-                    <div class="content">
-                        <a href="?theme_id=${theme.id}">${topic.title}</a>
-                    </div>
-            </c:forEach>
+            <div class="cheatSheet">
+	            <div class="themeTitle">
+	                <a href="showtheme/${theme.id}">${theme.title}</a>
+	            </div>
+	            <div class="themeDescription">${theme.description}</div>
+	            <c:forEach var="topic" items="${theme.topics}">
+	                    <div class="topicTitle">
+	                        <a href="showtheme/${theme.id}">${topic.title}</a>
+	                    </div>
+	                    <div class="topicDescription">${topic.description}</div>
+	            </c:forEach>
             </div>    
         </c:forEach>
     </div>
