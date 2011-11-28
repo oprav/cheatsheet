@@ -13,6 +13,6 @@ public class CheatSheetHandlerInterceptor extends HandlerInterceptorAdapter {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response,
             Object handler) throws Exception {
         response.sendRedirect("home");
-        return true;
+        return false;
     }
 }
